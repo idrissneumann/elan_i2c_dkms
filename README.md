@@ -14,7 +14,7 @@ Then, run this in a terminal:
 sudo dnf install -y git dkms # on fedora40 but use your own package manager
 git clone https://github.com/idrissneumann/elan_i2c_dkms.git
 cd elan_i2c_dkms
-sudo dkms install . --kernelsourcedir /lib/modules/6.10.9-200.fc40.x86_64/source # check the source dir of your own kernel version (uname -r)
+sudo dkms install . --force --kernelsourcedir /lib/modules/6.10.9-200.fc40.x86_64/source # check the source dir of your own kernel version (uname -r)
 ```
 
 Then reboot your machine.
@@ -33,3 +33,9 @@ Pick the value you'll find here:
 ![acpidump](./img/acpidump.png)
 
 And add it [here](./elan_i2c_core.c#1269)
+
+## Uninstall
+
+```shell
+sudo dkms remove elan_i2c/10.0 --all
+```
