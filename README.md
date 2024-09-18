@@ -11,10 +11,10 @@ To install, check and replace the values in the [dkms.conf](./dkms.conf) file (f
 Then, run this in a terminal:
 
 ```shell
-sudo dnf install -y git dkms # on fedora40 but use your own package manager
+sudo apt install -y git dkms # on ubuntu but use your own package manager
 git clone https://github.com/idrissneumann/elan_i2c_dkms.git
 cd elan_i2c_dkms
-sudo dkms install . --force --kernelsourcedir /lib/modules/6.10.9-200.fc40.x86_64/source # check the source dir of your own kernel version (uname -r)
+sudo dkms install . --force --kernelsourcedir "/lib/modules/$(uname -r)/source"
 ```
 
 Then reboot your machine.
@@ -24,7 +24,7 @@ Then reboot your machine.
 If it still not working, here's how I updated this driver on Fedora 40:
 
 ```shell
-sudo dnf install -y acpidump # on fedora40 but use your own package manager
+sudo apt install -y acpidump # on ubuntu but use your own package manager
 sudo acpidump | grep -C3 -i elan
 ```
 
