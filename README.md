@@ -9,9 +9,10 @@ Fork of [this fork](https://github.com/pavlepiramida/elan_i2c_dkms) of [this pro
 To install, run this in a terminal:
 
 ```shell
-sudo dnf install -y dkms # on fedora40 but use your own package manager
+sudo dnf install -y git dkms # on fedora40 but use your own package manager
+git clone https://github.com/idrissneumann/elan_i2c_dkms.git
 cd elan_i2c_dkms
-sudo dkms install .
+sudo dkms install . --kernelsourcedir /lib/modules/6.10.9-200.fc40.x86_64/source # check the source dir of your own kernel version
 ```
 
 Then reboot your machine.
