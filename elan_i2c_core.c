@@ -1039,8 +1039,7 @@ static void elan_remove_sysfs_groups(void *_data)
 	sysfs_remove_groups(&data->client->dev.kobj, elan_sysfs_groups);
 }
 
-static int elan_probe(struct i2c_client *client,
-		      const struct i2c_device_id *dev_id)
+static int elan_probe(struct i2c_client *client)
 {
 	const struct elan_transport_ops *transport_ops;
 	struct device *dev = &client->dev;
@@ -1289,7 +1288,7 @@ static struct i2c_driver elan_driver = {
 		.of_match_table = of_match_ptr(elan_of_match),
 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
 	},
-	// .probe		= elan_probe,
+	.probe		= elan_probe,
 	.id_table	= elan_id,
 };
 
